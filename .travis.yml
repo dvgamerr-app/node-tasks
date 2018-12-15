@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - "stable"
+
+before_script:
+  - npm i
+  - npm i --only=dev
+
+script:
+  - npm test
+
+cache:
+  directories:
+    - node_modules
+
+notifications:
+  webhooks:
+    urls:
+      - https://endpoint.touno.io/travis-ci
+    on_success: change # default: always
+    on_failure: always # default: always
+    on_start: always    # default: never
+    on_cancel: never   # default: always
+    on_error: always   # default: always
